@@ -10,6 +10,8 @@ def get_brl_usd_currency_by_day():
         Função para obter a cotação atual do dólar em relação ao real (BRL) utilizando a API Twelve Data.
 
         return:
+            dict: Dados da cotação USD/BRL (valores em BRL).
+            Em caso de erro, retorna um dicionário vazio.
             
     '''
     url = urljoin(BASE_URL, ENDPOINT)
