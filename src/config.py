@@ -1,8 +1,11 @@
 from os.path import join
+from os import getenv
 
-import dotenv
+from dotenv import load_dotenv
 import logging
 from pathlib import Path
+
+load_dotenv()
 
 # CAMINHO BASE/LOCAL
 try:
@@ -10,15 +13,15 @@ try:
 except NameError:
     LOCAL_DIR = Path.cwd()
 
-
 # CAMINHOS LOG
 LOG_DIR = join(LOCAL_DIR, 'logs')
 LOG_FILE = join(LOG_DIR, 'app.log')
 
-
 # CAMINHOS OUTPUT
-RPA_DOWNLOAD_DIR   = join(LOCAL_DIR, 'data')
+RPA_DOWNLOAD_DIR = join(LOCAL_DIR, 'data')
 
+# CHAVES E ACESSOS
+TWELVE_API_KEY = getenv('TWELVE_API_KEY')
 
 # LOGGING CONFIG
 logging.basicConfig(
