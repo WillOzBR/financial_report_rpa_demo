@@ -1,3 +1,9 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from src.scraping.selenium_config import SeleniumBrowser
+
 import pytest
 from src.scraping.selenium_config import SeleniumBrowser
 
