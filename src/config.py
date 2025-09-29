@@ -28,7 +28,7 @@ API_URL = 'https://api.twelvedata.com/'
 ENDPOINT = 'time_series'
 
 # SCRAPING URL
-PORTAL_URL = 'https://br.investing.com/currencies/usd-brl-historical-data'
+PORTAL_URL = 'https://www.investing.com/currencies/usd-brl-historical-data'
 
 # LOGGING CONFIG
 logging.basicConfig(
@@ -39,3 +39,25 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger(__name__)
+
+
+# INJECTION SCRIPTS
+js_error_supression = """
+            // Desabilita TODOS os logs do console
+            console.log = function() {};
+            console.error = function() {};
+            console.warn = function() {};
+            console.debug = function() {};
+            console.info = function() {};
+            console.trace = function() {};
+            
+            // Captura e ignora todos os erros JavaScript
+            window.onerror = function() { return true; };
+            window.addEventListener('error', function(e) { e.stopImmediatePropagation(); }, true);
+            window.addEventListener('unhandledrejection', function(e) { e.stopImmediatePropagation(); }, true);
+            
+            // Remove todos os event listeners problemáticos
+            document.querySelectorAll('*').forEach(function(el) {
+                el.onerror = null;
+            });
+        """
