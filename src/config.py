@@ -1,3 +1,4 @@
+import sys
 from os.path import join
 from os import getenv
 
@@ -40,6 +41,21 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger(__name__)
+
+# Cria um handler para o terminal (stdout)
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.INFO)  # Nível mínimo para aparecer no terminal
+console_handler.setFormatter(logging.Formatter(
+    "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+))
+
+# Evita duplicação se já existir
+if not logger.handlers:
+    logger.addHandler(console_handler)
+else:
+    # Garante que o handler de console não seja adicionado várias vezes
+    if not any(isinstance(h, logging.StreamHandler) for h in logger.handlers):
+        logger.addHandler(console_handler)
 
 
 # INJECTION SCRIPTS
