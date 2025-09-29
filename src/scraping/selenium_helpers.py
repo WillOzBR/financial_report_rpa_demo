@@ -60,9 +60,40 @@ class BrowserInteractions:
         except TimeoutException:
             return True
         
+    def wait_for_count_increase(self, by: By, selector: str, timeout: int = 3) -> bool:
+        """
+        Espera o número de elementos aumentar (útil para scroll infinito).
+        
+        Args:
+            by: Tipo de seletor
+            selector: String do seletor
+            timeout: Tempo máximo de espera
+            
+        Returns:
+            True se o número aumentou, False se não mudou
+        """
+        initial_count = len(self.driver.find_elements(by, selector))
+        try:
+            wait = WebDriverWait(self.driver, timeout)
+            wait.until(lambda d: len(d.find_elements(by, selector)) > initial_count)
+            new_count = len(self.driver.find_elements(by, selector))
+            logger.info(f"Elementos aumentaram de {initial_count} para {new_count}")
+            return True
+        except TimeoutException:
+            logger.info(f"Elementos não aumentaram (em: {initial_count})")
+            return False
+        
     def get_url(self) -> str:
         """Retorna a URL atual da página"""
         return self.driver.current_url
+    
+    def get_html(self) -> str:
+        """Retorna o HTML atual da página"""
+        return self.driver.page_source
+    
+    def execute_script(self, script: str):
+        """Executa um script JavaScript na página"""
+        return self.driver.execute_script(script)
 
     def close(self):
         """Fecha a página do navegador"""
