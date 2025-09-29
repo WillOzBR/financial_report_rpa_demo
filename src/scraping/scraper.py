@@ -121,3 +121,24 @@ def normalize_data(html: str) -> List[FinancialData]:
     logger.info(f"Normalização concluída. {len(normalized_list)} registros FinancialData criados.")
     return normalized_list
 
+
+
+def get_usd_brl_weekly_data() -> list[FinancialData]:
+    """
+    Orquestra a coleta do HTML bruto via Selenium e a normalização
+    da tabela raspada para o formato FinancialData semanal.
+
+    return:
+        list[FinancialData]: Lista de objetos normalizados
+        Em caso de erro, retorna uma lista vazia ([])
+    """    
+    # Coleta HTML bruto do portal (fetch)
+    raw_html = get_portal_html() 
+    
+    # Valida retorno
+    if not raw_html:
+        logger.error("Coleta do HTML bruto falhou. Retornando lista vazia.")
+        return []
+    
+    # Rerorna dados parseados e normalizados para consumo
+    return normalize_data(raw_html)
