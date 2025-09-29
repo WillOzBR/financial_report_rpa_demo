@@ -19,6 +19,7 @@ LOG_FILE = join(LOG_DIR, 'app.log')
 
 # CAMINHOS OUTPUT
 RPA_DOWNLOAD_DIR = join(LOCAL_DIR, 'data')
+CSV_REPORT_PATH = join(RPA_DOWNLOAD_DIR, 'currency_report.csv')
 
 # CHAVES E ACESSOS
 TWELVE_API_KEY = getenv('TWELVE_API_KEY')
