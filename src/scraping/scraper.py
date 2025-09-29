@@ -45,7 +45,7 @@ def get_portal_html():
             logger.info("Carregando dados da tabela...")
 
             max_scrolls = 15
-            for scroll_attempt in range(max_scrolls):
+            for scroll_attempt in range(max_scrolls): # Realiza scroll como garantia do carregamento da tabela.
                 bot.execute_script("window.scrollTo(0, document.body.scrollHeight);")  # Scroll até o final
 
                 # Espera aumentar o número de linhas (ou timeout de 3s)
