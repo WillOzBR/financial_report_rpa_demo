@@ -23,6 +23,13 @@ RPA_DOWNLOAD_DIR = join(LOCAL_DIR, 'data')
 # CHAVES E ACESSOS
 TWELVE_API_KEY = getenv('TWELVE_API_KEY')
 
+# API URL
+API_URL = 'https://api.twelvedata.com/'
+ENDPOINT = 'time_series'
+
+# SCRAPING URL
+PORTAL_URL = 'https://br.investing.com/currencies/usd-brl-historical-data'
+
 # LOGGING CONFIG
 logging.basicConfig(
     level=logging.INFO,

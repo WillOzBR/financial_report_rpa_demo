@@ -1,12 +1,11 @@
 import requests
 from urllib.parse import urljoin
-from src.config import TWELVE_API_KEY, logger
+from src.config import TWELVE_API_KEY, API_URL, ENDPOINT, logger
 
 from src.models.financial_data import FinancialData
 from src.utils.helpers import format_date, treat_float
 
-BASE_URL = 'https://api.twelvedata.com/'
-ENDPOINT = 'time_series'
+
 
 def fetch_brl_usd_currency_by_day() -> dict:
     '''
@@ -17,7 +16,7 @@ def fetch_brl_usd_currency_by_day() -> dict:
             Em caso de erro, retorna um dicionário vazio.
             
     '''
-    url = urljoin(BASE_URL, ENDPOINT)
+    url = urljoin(API_URL, ENDPOINT)
 
     params = {
         'symbol': 'USD/BRL',
