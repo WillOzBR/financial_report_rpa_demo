@@ -39,16 +39,31 @@ class SeleniumBrowser:
             "download.default_directory": self.download_dir,
             "download.prompt_for_download": False,
             "download.directory_upgrade": True,
-            "safebrowsing.enabled": True
+            "safebrowsing.enabled": True,
+            "profile.managed_default_content_settings.images": 2, # Desabilita imagens
+            "profile.managed_default_content_settings.plugins": 2, # Desabilita plugins
+            "profile.managed_default_content_settings.media_stream": 2, # Desabilita mídia (videos e audio)
+            "profile.managed_default_content_settings.popups": 2, # Desabilita popups
         }
         options.add_experimental_option("prefs", prefs)
+        options.page_load_strategy = 'eager'
         if self.headless:
             options.add_argument("--headless=new")
         for ext in self.extensions:
             options.add_argument(f'--load-extension={ext}')
+            
         options.add_argument('--no-sandbox')
         options.add_argument("--window-size=1920,1080")
+        options.add_argument('--log-level=3')
+        options.add_argument('--disable-logging')
+        options.add_argument('--mute-audio')
         options.add_argument('--disable-dev-shm-usage')
+        # User agent atualizado
+        options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+        
+        # Remover indicadores de automação
+        options.add_experimental_option("excludeSwitches", ["enable-automation", "enable-logging"])
+        options.add_experimental_option('useAutomationExtension', False)
         return options
         
     def _get_chrome_service(self):
