@@ -74,7 +74,6 @@ python app.py scraping
 
 # Executar apenas chamada API
 python app.py api
-```
 ````
 
 ## Considerações
