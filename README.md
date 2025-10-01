@@ -6,8 +6,8 @@ O intuito desse projeto é demonstrar conhecimentos e práticas de automação e
 
 É realizada a coleta da série histórica da cotação do dólar (BRL/USD) de fontes e granularidades diferentes (dias/semanas), que estão em contextos de API e página web com Javascript interativo (alternância entre intervalos).
 
-API: https://twelvedata.com/docs (Twelve Data)
-Portal para scraping: https://www.investing.com/ (Investing)
+- API: https://twelvedata.com/docs (Twelve Data)
+- Portal para scraping: https://www.investing.com/ (Investing)
 
 Os dados coletados são devolvidos em um output único e normalizado, contendo a data da informação, fonte, valor de alta, baixa e fechamento.
 
