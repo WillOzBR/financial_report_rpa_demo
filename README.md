@@ -39,6 +39,12 @@ Os dados coletados são devolvidos em um output único e normalizado, contendo a
    pip install -r requirements.txt
    ````
 
+4. Crie um arquivo .env na pasta raiz do projeto, para consumo das credenciais.
+ 
+   ````
+   TWELVE_API_KEY=sua_chave_api
+   ````
+
 ## Arquitetura
 
 Para o projeto, foi adotada uma arquitetura de camadas (layered architecture), possuindo uma separação de responsabilidades entre camadas.
